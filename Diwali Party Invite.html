@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Diwali ka invite, sirf aapke liye</title>
+<meta name="theme-color" content="#0a0e2a">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;600;700&family=Rozha+One&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0a0e2a;--bg2:#161c52;--gold:#ffb400;--gold2:#ffd36b;--ink:#f8efd6;--mute:#b9b6d4;color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg) radial-gradient(1200px 600px at 50% -10%,var(--bg2),transparent 70%);color:var(--ink);font-family:"Mukta",system-ui,sans-serif;font-size:18px;line-height:1.5;-webkit-tap-highlight-color:transparent;overflow-x:hidden}
+h1,h2,.rozha{font-family:"Rozha One",Georgia,serif;font-weight:400;color:var(--gold);margin:0}
+.sec{max-width:520px;margin:0 auto;padding:72px 22px;text-align:center;opacity:0;transform:translateY(28px);transition:opacity .8s,transform .8s}
+.sec.in{opacity:1;transform:none}
+.cover{min-height:100svh;display:flex;flex-direction:column;justify-content:center;align-items:center;cursor:pointer;opacity:1;transform:none;outline:0}
+.cover h1{font-size:clamp(30px,9vw,44px);line-height:1.15;margin-top:26px}
+.tap{margin-top:30px;padding:10px 26px;border:1.5px solid var(--gold);border-radius:99px;color:var(--gold2);font-weight:600;letter-spacing:.14em;text-transform:uppercase;font-size:14px;animation:pulse 2s infinite}
+.cover.lit .tap{opacity:0;animation:none;transition:opacity .4s}
+@keyframes pulse{50%{box-shadow:0 0 0 10px rgba(255,180,0,.12)}}
+.diya{width:86px;height:64px;margin:0 auto 6px;display:block;overflow:visible}
+.diya .bowl{fill:#c26a12}.diya .rim{fill:#ffb400}
+.diya .flame{fill:#ffd36b;opacity:0;transform:scale(.2);transform-origin:50px 30px;transition:opacity .6s,transform .6s}
+.lit .diya{filter:drop-shadow(0 0 14px rgba(255,180,0,.75))}
+.lit .diya .flame{opacity:1;transform:scale(1);animation:flick 1.4s ease-in-out infinite alternate}
+@keyframes flick{to{transform:scale(1.12,.94) rotate(2deg)}}
+h2{font-size:clamp(28px,8vw,38px);line-height:1.2}
+.sub{color:var(--mute);margin:14px 0 0}
+.plan{margin:28px 0 22px;display:grid;gap:12px;text-align:left}
+.row{background:rgba(255,255,255,.05);border:1px solid rgba(255,180,0,.25);border-radius:14px;padding:12px 16px}
+.row small{display:block;color:var(--gold2);text-transform:uppercase;letter-spacing:.12em;font-size:12px;font-weight:600}
+.btn{display:inline-block;background:var(--gold);color:#241500;font-weight:700;font-size:18px;padding:14px 28px;border-radius:99px;text-decoration:none;border:0;font-family:inherit;cursor:pointer;touch-action:manipulation}
+.btn:active{transform:scale(.97)}
+.btn[aria-disabled="true"]{opacity:.8}
+.count{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:24px}
+.count div{background:rgba(255,255,255,.06);border:1px solid rgba(255,180,0,.3);border-radius:14px;padding:14px 4px}
+.count b{display:block;font-family:"Rozha One",serif;font-weight:400;font-size:clamp(26px,8vw,36px);color:var(--gold)}
+.count span{font-size:12px;text-transform:uppercase;letter-spacing:.1em;color:var(--mute)}
+ol.rules{list-style:none;counter-reset:r;padding:0;margin:26px 0 0;text-align:left}
+.rules li{counter-increment:r;position:relative;padding:12px 14px 12px 52px;margin-bottom:10px;background:rgba(255,255,255,.05);border-radius:14px}
+.rules li::before{content:counter(r);position:absolute;left:14px;top:50%;transform:translateY(-50%);width:28px;height:28px;border-radius:50%;background:var(--gold);color:#241500;font-weight:700;display:grid;place-items:center;font-size:15px}
+.grp{margin-top:26px;text-align:left;padding:10px;border-radius:14px;border:1.5px solid transparent}
+.grp.need{border-color:#ff7a59;animation:shake .4s}
+@keyframes shake{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.grp label,.grp .lbl{display:block;font-weight:700;color:var(--gold2);margin-bottom:8px}
+input[type=text]{width:100%;font:inherit;font-size:18px;color:var(--ink);background:rgba(255,255,255,.07);border:1.5px solid rgba(255,180,0,.4);border-radius:12px;padding:12px 14px}
+input:focus{outline:2px solid var(--gold);outline-offset:1px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font:inherit;font-size:16px;color:var(--ink);background:rgba(255,255,255,.06);border:1.5px solid rgba(255,180,0,.4);border-radius:99px;padding:9px 16px;cursor:pointer;touch-action:manipulation}
+.chip[aria-pressed="true"]{background:var(--gold);color:#241500;border-color:var(--gold);font-weight:700}
+.react{min-height:1.6em;margin-top:8px;color:var(--gold2);font-style:italic;font-size:16px}
+[hidden]{display:none!important}
+.go{margin-top:30px}
+.miss{color:#ff9f86;min-height:1.5em;margin-top:10px;font-size:16px}
+.card{margin:30px auto 0;padding:30px 20px;border-radius:22px;background:linear-gradient(160deg,#1d2570,#0a0e2a);border:2px solid var(--gold);box-shadow:0 0 40px rgba(255,180,0,.25);animation:pop .7s both}
+@keyframes pop{from{opacity:0;transform:scale(.88)}}
+.card .k{letter-spacing:.2em;font-size:12px;color:var(--gold2);text-transform:uppercase;font-weight:600}
+.card .nm{font-family:"Rozha One",serif;font-size:clamp(30px,10vw,42px);color:var(--gold);margin:10px 0 4px;word-break:break-word;line-height:1.1}
+.card .rl{font-size:20px;font-weight:700}
+.card .dt{margin-top:16px;color:var(--mute);font-size:15px}
+.note{margin-top:16px;color:var(--gold2);font-weight:600}
+.link{background:none;border:0;color:var(--mute);text-decoration:underline;font:inherit;font-size:16px;margin-top:26px;cursor:pointer;padding:8px}
+.sp{position:fixed;width:8px;height:8px;margin:-4px;border-radius:50%;background:var(--gold2);box-shadow:0 0 8px var(--gold);pointer-events:none;z-index:9;animation:sp .65s ease-out forwards}
+@keyframes sp{to{transform:translate(var(--dx),var(--dy)) scale(0);opacity:0}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}.sec{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<section class="sec cover" id="s1" role="button" tabindex="0" aria-label="Tap to open the invite">
+  <div class="dslot"></div>
+  <h1>Diwali ka invite, sirf aapke liye</h1>
+  <div class="tap">Tap to open</div>
+</section>
+
+<section class="sec" id="s2">
+  <div class="dslot"></div>
+  <h2>Iss Diwali, party manao</h2>
+  <p class="sub">A night of taash, fun people and zero reasons to leave early.</p>
+</section>
+
+<section class="sec" id="s3">
+  <div class="dslot"></div>
+  <h2>The plan</h2>
+  <div class="plan">
+    <div class="row"><small>Date</small>Saturday, 7 November</div>
+    <div class="row"><small>Time</small>7 PM onwards</div>
+    <div class="row"><small>Food</small>Dinner included</div>
+    <div class="row"><small>Where</small>Battelsesteenweg 249, Mechelen</div>
+  </div>
+  <a class="btn" target="_blank" rel="noopener" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Diwali+Party&amp;dates=20261107T180000Z/20261107T230000Z&amp;location=Battelsesteenweg+249,+Mechelen&amp;details=Taash,+fun+people+and+zero+reasons+to+leave+early.">Add to Google Calendar</a>
+</section>
+
+<section class="sec" id="s4">
+  <div class="dslot"></div>
+  <h2>Diwali Party starts in</h2>
+  <div class="count" id="count" aria-live="off">
+    <div><b id="cd">0</b><span>Days</span></div><div><b id="ch">0</b><span>Hours</span></div><div><b id="cm">0</b><span>Mins</span></div><div><b id="cs">0</b><span>Secs</span></div>
+  </div>
+</section>
+
+<section class="sec" id="s5">
+  <div class="dslot"></div>
+  <h2>Rulebook</h2>
+  <ol class="rules">
+    <li>Traditional is mandatory. No entry without it.</li>
+    <li>Phones down during aarti. Selfies up right after.</li>
+    <li>Come hungry. Leave happy. Leave late.</li>
+    <li>Rulebreakers pay fine.</li>
+  </ol>
+</section>
+
+<section class="sec" id="s6">
+  <div class="dslot"></div>
+  <h2>RSVP</h2>
+  <div id="form">
+    <div class="grp" id="g-name">
+      <label for="name">Your name</label>
+      <input type="text" id="name" autocomplete="name" maxlength="40" placeholder="Naam kya hai?">
+    </div>
+    <div class="grp" id="g-status">
+      <span class="lbl">Coming na?</span>
+      <div class="chips" id="status"></div>
+      <div class="react" id="r-status" aria-live="polite"></div>
+    </div>
+    <div class="grp" id="g-role" hidden>
+      <span class="lbl">Pick your party role</span>
+      <div class="chips" id="role"></div>
+      <div class="react" id="r-role" aria-live="polite"></div>
+    </div>
+  </div>
+  <div class="go">
+    <a class="btn" id="wa" role="button" tabindex="0" aria-disabled="true">RSVP on WhatsApp</a>
+    <div class="miss" id="miss" aria-live="polite"></div>
+  </div>
+  <div class="card" id="card" hidden>
+    <div class="k">Diwali Party · Entry pass</div>
+    <div class="nm" id="c-name"></div>
+    <div class="rl" id="c-role"></div>
+    <div class="dt">Saturday, 7 November · 7 PM onwards<br>Battelsesteenweg 249, Mechelen</div>
+  </div>
+  <div class="note" id="note" hidden>Screenshot your card. It’s your entry pass.</div>
+  <button class="link" id="reset" type="button">Change my answers</button>
+</section>
+
+<script>
+(function(){
+var RM=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;
+var $=function(i){return document.getElementById(i)};
+var DIYA='<svg class="diya" viewBox="0 0 100 70" aria-hidden="true"><path class="flame" d="M50 4C60 18 64 26 50 38 36 26 40 18 50 4Z"/><path class="bowl" d="M6 34h88c0 20-18 32-44 32S6 54 6 34Z"/><ellipse class="rim" cx="50" cy="34" rx="44" ry="6"/></svg>';
+document.querySelectorAll(".dslot").forEach(function(e){e.innerHTML=DIYA});
+
+function burst(el){
+  if(RM)return;
+  var r=el.getBoundingClientRect(),x=r.left+r.width/2,y=r.top+r.height/2;
+  for(var i=0;i<9;i++){
+    var s=document.createElement("span"),a=i/9*6.283,d=26+Math.random()*26;
+    s.className="sp";s.style.left=x+"px";s.style.top=y+"px";
+    s.style.setProperty("--dx",Math.cos(a)*d+"px");s.style.setProperty("--dy",Math.sin(a)*d+"px");
+    s.addEventListener("animationend",function(){this.remove()});
+    document.body.appendChild(s);
+  }
+}
+
+/* Diyas light one by one as sections scroll into view */
+function light(sec){sec.classList.add("in","lit")}
+if("IntersectionObserver" in window&&!RM){
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){
+    if(e.isIntersecting&&e.target.id!=="s1"){setTimeout(function(){light(e.target)},250);io.unobserve(e.target)}
+  })},{threshold:.35});
+  document.querySelectorAll(".sec").forEach(function(s){if(s.id!=="s1")io.observe(s)});
+}else{document.querySelectorAll(".sec").forEach(light)}
+
+var cover=$("s1");
+function openCover(){
+  if(cover.classList.contains("lit"))return;
+  cover.classList.add("lit");burst(cover.querySelector(".diya"));
+  setTimeout(function(){$("s2").scrollIntoView({behavior:RM?"auto":"smooth"})},RM?0:1000);
+}
+cover.addEventListener("click",openCover);
+cover.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();openCover()}});
+
+/* Countdown: 7 Nov 2026, 19:00 Brussels time (UTC+1) */
+var T=new Date("2026-11-07T19:00:00+01:00").getTime();
+function tick(){
+  var ms=Math.max(0,T-Date.now()),s=Math.floor(ms/1000);
+  $("cd").textContent=Math.floor(s/86400);$("ch").textContent=Math.floor(s%86400/3600);
+  $("cm").textContent=Math.floor(s%3600/60);$("cs").textContent=s%60;
+}
+tick();setInterval(tick,1000);
+
+/* RSVP */
+var STATUS={"Pakka":"Pakka?! That’s the spirit. Seat saved.","Shayad":"Shayad? That’s just shayari. Decide karo, yaar.","Iss baar not possible":"Aww. The diyas will miss you. Mithai hum bacha lenge."};
+var ROLE={"DJ Saab":"The aux cord is a big responsibility. No one-song loops, please.","Decor Paglu":"Fairy lights are your love language.","Chakna Champion":"The real MVP. Bhookh is watching.","Bartender":"Pour with love, not with panic.","Game Master":"Taash, rules, drama. All yours.","Paparazzi":"Every angle, every candid. Lens ready.","Chief Guest (just here to vibe)":"Just here to vibe. Respect. Ribbon-cutting at 8."};
+var st="",role="",wa=$("wa");
+function chips(id,map,onPick){
+  var box=$(id);
+  Object.keys(map).forEach(function(k){
+    var b=document.createElement("button");b.type="button";b.className="chip";b.textContent=k;b.setAttribute("aria-pressed","false");
+    b.addEventListener("click",function(){
+      box.querySelectorAll(".chip").forEach(function(c){c.setAttribute("aria-pressed",String(c===b))});
+      onPick(k);burst(b);
+    });
+    box.appendChild(b);
+  });
+}
+chips("status",STATUS,function(k){
+  st=k;$("r-status").textContent=STATUS[k];$("g-status").classList.remove("need");
+  var coming=k!=="Iss baar not possible";
+  $("g-role").hidden=!coming;
+  if(!coming){role="";$("r-role").textContent="";$("role").querySelectorAll(".chip").forEach(function(c){c.setAttribute("aria-pressed","false")})}
+  update();
+});
+chips("role",ROLE,function(k){role=k;$("r-role").textContent=ROLE[k];$("g-role").classList.remove("need");update()});
+$("name").addEventListener("input",function(){$("g-name").classList.remove("need");update()});
+
+function nm(){return $("name").value.trim()}
+function missing(){
+  var m=[];
+  if(!nm())m.push(["g-name","your name"]);
+  if(!st)m.push(["g-status","if you’re coming"]);
+  if(st&&st!=="Iss baar not possible"&&!role)m.push(["g-role","your party role"]);
+  return m;
+}
+function update(){
+  var ok=missing().length===0;
+  $("miss").textContent="";
+  if(ok){
+    var msg="Diwali Party RSVP (7 Nov)\nName: "+nm()+"\nComing: "+st+(role?"\nRole: "+role:"");
+    wa.href="https://wa.me/918890327772?text="+encodeURIComponent(msg);
+    wa.target="_blank";wa.rel="noopener";wa.setAttribute("aria-disabled","false");
+  }else{
+    wa.removeAttribute("href");wa.removeAttribute("target");wa.setAttribute("aria-disabled","true");
+  }
+}
+wa.addEventListener("click",function(){
+  var m=missing();
+  if(m.length){
+    m.forEach(function(x){var g=$(x[0]);g.classList.remove("need");void g.offsetWidth;g.classList.add("need")});
+    $("miss").textContent="Still missing: "+m.map(function(x){return x[1]}).join(", ")+".";
+    $(m[0][0]).scrollIntoView({behavior:RM?"auto":"smooth",block:"center"});
+    return;
+  }
+  var going=st!=="Iss baar not possible";
+  $("c-name").textContent=nm();
+  $("c-role").textContent=going?role:"Sending love from afar";
+  $("card").hidden=false;$("note").hidden=!going;
+  burst(wa);
+  setTimeout(function(){$("card").scrollIntoView({behavior:RM?"auto":"smooth",block:"center"})},350);
+});
+wa.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();wa.click()}});
+
+$("reset").addEventListener("click",function(){
+  st="";role="";$("name").value="";
+  document.querySelectorAll(".chip").forEach(function(c){c.setAttribute("aria-pressed","false")});
+  ["r-status","r-role","miss"].forEach(function(i){$(i).textContent=""});
+  document.querySelectorAll(".grp").forEach(function(g){g.classList.remove("need")});
+  $("g-role").hidden=true;$("card").hidden=true;$("note").hidden=true;
+  update();$("name").focus({preventScroll:true});
+  $("form").scrollIntoView({behavior:RM?"auto":"smooth",block:"center"});
+});
+update();
+})();
+</script>
+</body>
+</html>
